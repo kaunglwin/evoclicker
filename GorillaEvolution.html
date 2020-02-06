@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<link rel="stylesheet" type="text/css" href="GorillaEvolution.css">
+    <title> EvoClicker </title>
+  </head>
+  <body>   
+    <!-- import the webpage's javascript file -->
+    
+       <div id= "moneyCount">
+       <img src = "currency.png" height = "50px" width = "50px" id="moneyIcon">
+       <p id="moneyCounter"> 0 </p>
+       <p id="CPC"> You get 1 coin per click</p>
+      </div>
+
+      <div id="upgrader" onclick = "upgrade()">
+      </div>
+
+      <img src = "currency.png" width = "200px" id="coin" onClick="clicked()" >
+      <div id="evoImg">
+      </div>
+      <div id="moneyIcon"></div>
+
+ </body>
+    
+   <script type="text/javascript">
+   var money = 0;
+   var CPC = 10;
+   /*cost of the cheapest food*/
+   var food1Cost = [50,250];
+   var food1Inc = [1,5];
+   /*cost of medium food*/
+   var food2Cost = [500,2500];
+   var food2Inc = [12,65];
+   /*cost of epic food*/
+   var food3Cost = [5000,25000];
+   var food3Inc = [120,625];
+   /*cost of legendry food*/
+   var food4Cost = [999999];
+   var food4Inc = [35000];
+   /*cost of increasing click multiplier and what it will increase by*/
+   var coinMultiplier = [1,5,11,20,30];
+   var cost = [25,200,450,1000,2500];
+   var numberOfButtons = coinMultiplier.length;
+
+
+
+   function evolve(name, url) {
+    this.name = name;
+    this.url = url;
+   }
+   var evos = [
+   new evolve("egg", "Evo-1.png"),
+   new evolve("chick", "Evo-2.png"),
+   new evolve("chicken","Evo-3.png"),
+   new evolve("dodo","Evo-4.png"),
+   new evolve("peacock","Evo-5.png"),
+   new evolve("ostrich","Evo-6.png"),
+   new evolve("pterodactyl","Evo-7.png"),
+   new evolve("kingKong","Evo-8.png"),
+   new evolve("donkeyKong","Evo-9.png"),
+   new evolve("diddyKong","Evo-10.png"),
+   new evolve("terk", "Evo-11.png"),
+   new evolve("tarzan", "Evo-12.png"),
+   ];
+   var evoNum = 0;
+   var img = document.createElement("img");
+   img.src = evos[evoNum].url;
+
+   img.height = 300;
+ 
+   var src = document.getElementById("evoImg");
+   src.appendChild(img)
+
+
+
+   function clicked(){
+    money+=CPC;
+    console.log(money);
+    var tempId = document.getElementById("moneyCounter");
+    tempId.innerHTML = money;
+     var tempId = document.getElementById("CPC");
+     tempId.innerHTML = "You get " + CPC + " coins per click";
+    console.log("You get " + CPC + " coins per click");
+
+    for ( var j = 0  ;  j < numberOfButtons ;  j++  ){
+    if ( clicked  >= coinMultiplier[j] ) {
+    changeButton( j, 1 );
+    }
+   
+
+   }
+
+  function changeButton( bNum, bStatus ){
+var buttonList = "Upgrader" + (bNum + 1)  ;
+console.log("buttonList:" + buttonList);
+var tempId = document.getElementById( buttonList );
+if (bStatus == 1 ) {
+  console.log(bStatus);
+  // use innerHTML to change the content
+  tempId.style.backgroundColor = "lime";
+    } else {
+    // use innerHTML to change the content
+    tempId.style.backgroundColor = "red";
+    } 
+} 
+// end of function changeButton
+
+
+function upgradeMod(buttonNumber) {
+  // adjust button number to match our array index
+  var index = buttonNumber - 1;
+
+  console.log("clicked button:" + buttonNumber);
+  // index is how computers read arrays starting from zero
+  console.log("      index is:" + index);
+
+  if (clicks >= cost[index] ){
+    clicks = clicks - cost[buttonNumber - 1];
+    // logic deduct more points if they clicked a higher cost prize
+    // BananasPerClick += 1;
+    // legacy code
+    BananasPerClick = BananasPerClick + BPCadded[buttonNumber -1];
+    var tempId = document.getElementById("clickOutput");
+      tempId.innerHTML = "you have " + clicks + " Banana(s)";
+      var tempId = document.getElementById("clickBonus");
+      tempId.innerHTML = "You get " + BananasPerClick + " Bananas per click";
+
+    for ( var j = 0  ;  j <  numberOfButtons ;  j++   ){
+      if ( clicks < cost[j] ) {
+      changeButton( j, 0 );
+    }
+
+  }
+
+      //if clicked, the cost increases with an array called increase
+      for ( var w = 0  ;  w <  numberOfButtons ;  w++   ){
+  
+        cost[j] = cost[w] + increase[w];
+
+      }
+      console.log("increased by:" + increase)
+      //if clicked, the cost increases with an array called increase
+      
+      }
+    }  // end for loop  
+// endif
+
+//end function mod
+
+
+
+
+
+
+   }
+   </script>
