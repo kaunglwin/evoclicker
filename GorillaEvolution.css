@@ -1,10 +1,4 @@
-div {
-   border: 2px solid black;
-   border-radius: 20px;
-   color:black;
-   clear: both;
-   margin-bottom: 5px;
-}
+
 #moneyIcon { 
    float: left;
    text-align: left;
@@ -25,20 +19,7 @@ div {
    left: 50%;
    transform: translate(-50%,-50%);
 }
-#Game {
-   background-color:yellow;
-   height: 900px;
-   margin-right: 40px;
-   width:80%;
-   margin-left: 10%;
-   float: left;
-   clear: all;
-   border-radius: 30px;
-   opacity:0.9;
-   text-align: center;
-   font-size: 20px;
-   color: green;
-}	
+   
 .buttons {
    border: 2px solid black;
    border-radius: 20px;
@@ -50,16 +31,9 @@ div {
    padding: 5px;
    float:left;
    position:absolute;
-}	
-.buttons2 {
-   border: 2px solid black;
-   border-radius: 20px;
-   color:black;
-   background-color: lime;
-   width:20%;
-   position:absolute;
-   display:none;
-}	
+}  
+
+
 
 
 
